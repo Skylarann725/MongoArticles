@@ -5,15 +5,15 @@ nav {
     height: 90px;
     line-height: 85px;
     font-family: 'Handlee', cursive;
-    position: fixed;
 }
 
 .parallax-container {
-    height: 400px;
+    height: 500px;
 }
 
 .collection-header {
     font-family: 'Handlee', cursive;
+    height: 80px;
 }
 
 .collection-item {

@@ -11,9 +11,9 @@ var ArticleSchema = new Schema({
     required: true
   },
 
-  date: {
-    type: Date
-  },
+  // date: {
+  //   type: Date
+  // },
   // link is a required string
   content: {
     type: String,

@@ -1,4 +1,5 @@
     <!-- Nav Bar Setup -->
+<div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper #424242 grey darken-3">
             <a href="#" class="brand-logo center">Article Finder</a>
@@ -9,13 +10,14 @@
             </ul>
         </div>
     </nav>
+</div>
     <!-- Modal Structure -->
     <div id="resultsModal" class="modal">
         <div class="modal-content center-align">
-            <h4 class="result-text">Added 20 New Articles!</h4>
+            <h4>Added 20 New Articles!</h4>
         </div>
         <div class="modal-footer">
-            <a id="close" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
         </div>
     </div>
     <!-- Paralax -->
@@ -25,16 +27,36 @@
     <!-- Article Boxes -->
     <div class="articles">
         <ul class="collection with-header">
-            
+        {{#each articles}}            
             <div class="title" id="article_title">
                 <li class="collection-header #4db6ac teal lighten-2">
-                    <div>
-                        <h4>Article Title<a class="waves-effect waves-light btn" id="save_button">Save Article</a></h4></div>
+                 <form action="/" method="PUT" method="POST">
+                    <div><h4>{{this.title}}<a class="waves-effect waves-light btn" id="save_button">Save Article</a></h4></div>
                 </li>
+                </form>
             </div>
             <div class="summary" id="article_summary">
-                <li class="collection-item">Article Summary</li>
-            </div>
-            
-        </ul>
+                <li class="collection-item"><p>{{this.content}}</p></li>
+            </div> 
+        {{/each}}           
     </div>
+
+<script type="text/javascript">
+// initializing materialize select element
+$('select').material_select();
+// initializing materialize modal element
+$('#resultsModal').modal();
+
+//On click of scrape articles button
+$("#scraped").on("click", function(event) {
+
+    event.preventDefault();
+
+    $.get("/scrape").done(function(data) {
+        $('#resultsModal').modal('open');
+    });
+});
+
+
+
+</script>

@@ -12,7 +12,11 @@ module.exports = function(app) {
     // A GET request to scrape the echojs website
     app.get("/scrape", function(req, res) {
         // First, we grab the body of the html with request
-        request("http://www.livescience.com/", function(error, response, html) {
+        request("http://www.livescience.com/culture?type=article", function(error, response, html) {
+            //Check for error
+            if(error){
+                throw error;
+            }
             // Then, we load that into cheerio and save it to $ for a shorthand selector
             var $ = cheerio.load(html);
             // Now, we grab every h2 within an article tag, and do the following:
@@ -23,7 +27,7 @@ module.exports = function(app) {
 
                 // Add the text and href of every link, and save them as properties of the result object
                 result.title = $(this).children("h2").text();
-                result.date = $(this).find(".date-posted").text();
+                // result.date = $(this).find(".date-posted").text();
                 result.content = $(this).find(".mod-copy").text();
                 result.link = $(this).find(".mod-copy").find("a").attr("href");
 
@@ -45,8 +49,7 @@ module.exports = function(app) {
 
             });
         });
-        // Tell the browser that we finished scraping the text
-        res.send("Scrape Complete");
+        res.redirect("/");
     });
 
     // This will get the articles we scraped from the mongoDB
