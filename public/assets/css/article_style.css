@@ -1,0 +1,37 @@
+body {
+    background-color: white;
+}
+nav {
+    height: 90px;
+    line-height: 85px;
+    font-family: 'Handlee', cursive;
+    position: fixed;
+}
+
+.parallax-container {
+    height: 400px;
+}
+
+.collection-header {
+    font-family: 'Handlee', cursive;
+}
+
+.collection-item {
+    font-family: 'Handlee', cursive;
+}
+
+#save_button {
+    float: right;
+    background-color: #424242;
+}
+
+#notes_button {
+    float: right;
+    background-color: #424242;
+}
+
+#delete_button {
+    float: right;
+    background-color: #424242;
+    margin-left: 5px;
+}
