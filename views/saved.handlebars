@@ -1,43 +1,42 @@
- <nav>
+    <!-- Nav Bar Setup -->
+<div class="navbar-fixed">
+    <nav>
         <div class="nav-wrapper #424242 grey darken-3">
             <a href="#" class="brand-logo center">Article Finder</a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li><a href="index.handlebars">Home</a></li>
                 <li><a href="saved.handlebars">Saved Articles</a></li>
+                <li><a class="waves-effect waves-light btn" id="scraped">Scrape New Articles!</a></li>
             </ul>
         </div>
     </nav>
+</div>
+    <!-- Modal Structure -->
+    <div id="resultsModal" class="modal">
+        <div class="modal-content center-align">
+            <h4>Added 20 New Articles!</h4>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+        </div>
+    </div>
+    <!-- Paralax -->
     <div class="parallax-container">
         <div class="parallax"><img src="./assets/img/article.jpg"></div>
     </div>
-    <ul class="collection with-header">
-        <div class="title" id="article_title">
-            <li class="collection-header #4db6ac teal lighten-2">
-                <div>
-                    <h4>Article Title<a class="waves-effect waves-light btn" id="delete_button">Delete from Saved</a><a class="waves-effect waves-light btn" id="notes_button">Article Notes</a></h4></div>
-            </li>
-        </div>
-        <div class="summary" id="article_summary">
-            <li class="collection-item">Article Summary</li>
-        </div>
-    </ul>
-    <ul class="collection with-header">
-        <li class="collection-header #4db6ac teal lighten-2">
-            <h4>Article Title</h4></li>
-        <li class="collection-item">Article Summary</li>
-    </ul>
-    <ul class="collection with-header">
-        <li class="collection-header #4db6ac teal lighten-2">
-            <h4>Article Title</h4></li>
-        <li class="collection-item">Article Summary</li>
-    </ul>
-    <ul class="collection with-header">
-        <li class="collection-header #4db6ac teal lighten-2">
-            <h4>Article Title</h4></li>
-        <li class="collection-item">Article Summary</li>
-    </ul>
-    <ul class="collection with-header">
-        <li class="collection-header #4db6ac teal lighten-2">
-            <h4>Article Title</h4></li>
-        <li class="collection-item">Article Summary</li>
-    </ul>
+    <!-- Article Boxes -->
+    <div class="articles">
+        <ul class="collection with-header">
+        {{#each articles}}            
+            <div class="title" id="article_title">
+                <li class="collection-header #4db6ac teal lighten-2">
+                 <form action="/" method="PUT" method="POST">
+                    <div><h4>{{this.title}}<a class="waves-effect waves-light btn" id="save_button">Save Article</a></h4></div>
+                </li>
+                </form>
+            </div>
+            <div class="summary" id="article_summary">
+                <li class="collection-item"><p>{{this.content}}{{this.link}}</p></li>
+            </div> 
+        {{/each}}           
+    </div>

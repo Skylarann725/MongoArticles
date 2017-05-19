@@ -12,9 +12,24 @@
   <body>
     {{{ body }}}
     <script type="text/javascript">
-        $(document).ready(function() {
-        $('.parallax').parallax();
-    });
+      $(document).ready(function() {
+          // initializing parallax element
+          $('.parallax').parallax();
+          // initializing materialize select element
+          $('select').material_select();
+          // initializing materialize modal element
+          $('#resultsModal').modal();
+
+          //On click of scrape articles button
+          $("#scraped").on("click", function(event) {
+
+            event.preventDefault();
+
+            $.get("/scrape").done(function(data) {
+              $('#resultsModal').modal('open');
+            });
+          });
+      });
     </script> 
   </body>
 </html>

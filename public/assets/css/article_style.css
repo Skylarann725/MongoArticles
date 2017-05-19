@@ -35,3 +35,9 @@ nav {
     background-color: #424242;
     margin-left: 5px;
 }
+footer {
+  line-height: 65px;
+  font-family: 'Handlee', cursive;
+  text-align: center;
+  color: white;
+}

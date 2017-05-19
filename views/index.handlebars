@@ -36,27 +36,12 @@
                 </form>
             </div>
             <div class="summary" id="article_summary">
-                <li class="collection-item"><p>{{this.content}}</p></li>
+                <li class="collection-item"><p>{{this.content}}{{this.link}}</p></li>
             </div> 
         {{/each}}           
     </div>
 
-<script type="text/javascript">
-// initializing materialize select element
-$('select').material_select();
-// initializing materialize modal element
-$('#resultsModal').modal();
-
-//On click of scrape articles button
-$("#scraped").on("click", function(event) {
-
-    event.preventDefault();
-
-    $.get("/scrape").done(function(data) {
-        $('#resultsModal').modal('open');
-    });
-});
-
-
-
-</script>
+    <footer class="page-footer #424242 grey darken-3">
+            © Copyright2017 Skylar Siagel | &nbsp
+            <a class="grey-text text-lighten-4" href="https://github.com/Skylarann725/MongoArticles">GitHub Link</a>
+    </footer>
