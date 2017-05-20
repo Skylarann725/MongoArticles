@@ -4,8 +4,8 @@
         <div class="nav-wrapper #424242 grey darken-3">
             <a href="#" class="brand-logo center">Article Finder</a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a href="index.handlebars">Home</a></li>
-                <li><a href="saved.handlebars">Saved Articles</a></li>
+                <li id="index_hbds"><a href="/">Home</a></li>
+                <li id="saved_hbds"><a href="/saved">Saved Articles</a></li>
             </ul>
         </div>
     </nav>
@@ -16,7 +16,7 @@
             <h4>Notes for Article: {{this._id}}</h4>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Save Note</a>
+            <a href="/saved" class="modal-action modal-close waves-effect waves-green btn-flat">Save Note</a>
         </div>
     </div>
     <!-- Paralax -->
@@ -29,7 +29,7 @@
         {{#each articles}}            
             <div class="title" id="article_title">
                 <li class="collection-header #4db6ac teal lighten-2">
-                 <form action="/" method="PUT" method="POST">
+                 <form action="/saved" method="PUT" method="POST">
                     <div><h4>{{this.title}}<a class="waves-effect waves-light btn" id="delete_button">Delete from Saved</a><a class="waves-effect waves-light btn" id="notes_button">Article Notes</a></h4></div>
                 </li>
                 </form>
@@ -39,3 +39,8 @@
             </div> 
         {{/each}}           
     </div>
+
+    <footer class="page-footer #424242 grey darken-3">
+            © Copyright2017 Skylar Siagel | &nbsp
+            <a class="grey-text text-lighten-4" href="https://github.com/Skylarann725/MongoArticles">GitHub Link</a>
+    </footer>

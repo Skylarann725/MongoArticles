@@ -4,8 +4,8 @@
         <div class="nav-wrapper #424242 grey darken-3">
             <a href="#" class="brand-logo center">Article Finder</a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a href="index.handlebars">Home</a></li>
-                <li><a href="saved.handlebars">Saved Articles</a></li>
+                <li id="index_hbds"><a href="/">Home</a></li>
+                <li id="saved_hbds"><a href="/saved">Saved Articles</a></li>
                 <li><a class="waves-effect waves-light btn" id="scraped">Scrape New Articles!</a></li>
             </ul>
         </div>
@@ -14,10 +14,10 @@
     <!-- Modal Structure -->
     <div id="resultsModal" class="modal">
         <div class="modal-content center-align">
-            <h4>Added 20 New Articles!</h4>
+            <h4>Added New Articles!</h4>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+            <a href="/" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
         </div>
     </div>
     <!-- Paralax -->
@@ -36,7 +36,7 @@
                 </form>
             </div>
             <div class="summary" id="article_summary">
-                <li class="collection-item"><a href="http://www.livescience.com/{{this.link}}">{{this.content}}</a></p></li>
+                <li class="collection-item"><a href="http://www.livescience.com/{{this.link}}">{{this.content}}{{this.date}}</a></p></li>
             </div> 
         {{/each}}           
     </div>

@@ -12,7 +12,7 @@ module.exports = function(app) {
     // A GET request to scrape the echojs website
     app.get("/scrape", function(req, res) {
         // First, we grab the body of the html with request
-        request("http://www.livescience.com/", function(error, response, html) {
+        request("http://www.livescience.com/culture?type=article", function(error, response, html) {
             //Check for error
             if(error){
                 throw error;
@@ -27,7 +27,7 @@ module.exports = function(app) {
 
                 // Add the text and href of every link, and save them as properties of the result object
                 result.title = $(this).children("h2").text();
-                // result.date = $(this).find(".date-posted").text();
+                result.date = $(this).find(".date-posted").text();
                 result.content = $(this).find(".mod-copy").text();
                 result.link = $(this).find(".mod-copy").find("a").attr("href");
 
@@ -48,8 +48,8 @@ module.exports = function(app) {
                 });
 
             });
-        });
-        res.redirect("/");
+            res.redirect("/");
+        }); 
     });
 
     // This will get the articles we scraped from the mongoDB
@@ -72,27 +72,43 @@ module.exports = function(app) {
 
     });
 
+// This will get the articles we scraped from the mongoDB
+    app.get("/saved", function(req, res) {
+
+        Article.find({"saved": true}, function(error, doc) {
+            // Send any errors to the browser
+            if (error) {
+                res.send(error);
+            }
+            // Or send the doc to the browser
+            else {
+                var hbsObject = {
+                    articles: doc
+                };
+                console.log(hbsObject);
+                res.render("saved", hbsObject);
+            }
+        });
+
+    });
+
     // This will grab an article by it's ObjectId
-    app.get("/articles/:id", function(req, res) {
-        Article.findOne({ "_id": req.params.id })
-            // ..and string a call to populate the entry with the notes stored in the user's notes array
-            .populate("note")
-            // Now, execute that query
-            .exec(function(error, doc) {
+    app.post("/saved/:id", function(req, res) {
+        Article.findOne({ "_id": req.params.id }, {$set: {'saved': true}}, 
+            function(error, doc) {
                 // Send any errors to the browser
                 if (error) {
                     res.send(error);
                 }
                 // Or, send our results to the browser, which will now include the notes stored in the user
                 else {
-                    res.send(doc);
+                    res.redirect("/");
                 }
             });
-
     });
 
     // Create a new note or replace an existing note
-    app.post("/articles/:id", function(req, res) {
+    app.post("/saved/:id", function(req, res) {
         // Use our Note model to make a new note from the req.body
         var newNote = new Note(req.body);
         // Save the new note to mongoose
