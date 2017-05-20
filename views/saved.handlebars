@@ -6,18 +6,17 @@
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li><a href="index.handlebars">Home</a></li>
                 <li><a href="saved.handlebars">Saved Articles</a></li>
-                <li><a class="waves-effect waves-light btn" id="scraped">Scrape New Articles!</a></li>
             </ul>
         </div>
     </nav>
 </div>
     <!-- Modal Structure -->
-    <div id="resultsModal" class="modal">
+    <div id="commentsModal" class="modal">
         <div class="modal-content center-align">
-            <h4>Added 20 New Articles!</h4>
+            <h4>Notes for Article: {{this._id}}</h4>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Save Note</a>
         </div>
     </div>
     <!-- Paralax -->
@@ -31,7 +30,7 @@
             <div class="title" id="article_title">
                 <li class="collection-header #4db6ac teal lighten-2">
                  <form action="/" method="PUT" method="POST">
-                    <div><h4>{{this.title}}<a class="waves-effect waves-light btn" id="save_button">Save Article</a></h4></div>
+                    <div><h4>{{this.title}}<a class="waves-effect waves-light btn" id="delete_button">Delete from Saved</a><a class="waves-effect waves-light btn" id="notes_button">Article Notes</a></h4></div>
                 </li>
                 </form>
             </div>

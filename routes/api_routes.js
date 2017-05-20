@@ -12,7 +12,7 @@ module.exports = function(app) {
     // A GET request to scrape the echojs website
     app.get("/scrape", function(req, res) {
         // First, we grab the body of the html with request
-        request("http://www.livescience.com/culture?type=article", function(error, response, html) {
+        request("http://www.livescience.com/", function(error, response, html) {
             //Check for error
             if(error){
                 throw error;
