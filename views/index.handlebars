@@ -1,12 +1,12 @@
     <!-- Nav Bar Setup -->
 <div class="navbar-fixed">
     <nav>
-        <div class="nav-wrapper #424242 grey darken-3">
-            <a href="#" class="brand-logo center">Article Finder</a>
+        <div class="nav-wrapper #212121 grey darken-4">
+            <a href="#" class="brand-logo center">Live Science Article Finder</a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li id="index_hbds"><a href="/">Home</a></li>
                 <li id="saved_hbds"><a href="/saved">Saved Articles</a></li>
-                <li><a class="waves-effect waves-light btn" id="scraped">Scrape New Articles!</a></li>
+                <li><a class="waves-effect waves-light btn" id="scraped">Get New Articles!</a></li>
             </ul>
         </div>
     </nav>
@@ -22,16 +22,16 @@
     </div>
     <!-- Paralax -->
     <div class="parallax-container">
-        <div class="parallax"><img src="./assets/img/article.jpg"></div>
+        <div class="parallax"><img src="./assets/img/science3.jpg"></div>
     </div>
     <!-- Article Boxes -->
     <div class="articles">
         <ul class="collection with-header">
         {{#each articles}}            
             <div class="title" id="article_title">
-                <li class="collection-header #4db6ac teal lighten-2">
+                <li class="collection-header #e1f5fe light-blue lighten-5">
                  <form action="/" method="PUT" method="POST">
-                    <div><h4>{{this.title}}<a class="waves-effect waves-light btn" id="save_button">Save Article</a></h4></div>
+                    <div><h5><img src="{{this.image}}">{{this.title}}<a class="waves-effect waves-light btn" id="save_article" data-id="{{this._id}}">Save Article</a></h5></div>
                 </li>
                 </form>
             </div>
@@ -41,7 +41,7 @@
         {{/each}}           
     </div>
 
-    <footer class="page-footer #424242 grey darken-3">
+    <footer class="page-footer #212121 grey darken-4">
             © Copyright2017 Skylar Siagel | &nbsp
             <a class="grey-text text-lighten-4" href="https://github.com/Skylarann725/MongoArticles">GitHub Link</a>
     </footer>

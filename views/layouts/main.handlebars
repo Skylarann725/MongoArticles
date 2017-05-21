@@ -29,6 +29,23 @@
               $('#resultsModal').modal('open');
             });
           });
+
+          $("#save_article").on("click", function() {
+            // Save the id
+            var id = $(this).attr("data-id");
+            console.log(id);
+
+            // Now make an ajax call for the Article
+            $.ajax({
+            method: "POST",
+            url: `/saved/${id}`
+            })
+            // With that done, add the article information to the page
+            .done(function(data) {
+              console.log(data);
+              $("article_title").prepend(data.title);
+            });
+          });
       });
     </script> 
   </body>

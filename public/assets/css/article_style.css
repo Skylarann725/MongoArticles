@@ -20,23 +20,32 @@ nav {
     font-family: 'Handlee', cursive;
 }
 
-#save_button {
+#scraped {
+  background-color: #e1f5fe;
+  color: black;
+}
+
+#save_article {
     float: right;
-    background-color: #424242;
+    background-color: #212121;
+}
+
+img {
+  width: 100px;
 }
 
 #notes_button {
     float: right;
-    background-color: #424242;
+    background-color: #212121;
 }
 
 #delete_button {
     float: right;
-    background-color: #424242;
+    background-color: #212121;
     margin-left: 5px;
 }
-footer {
-  line-height: 65px;
+.page-footer {
+  line-height: 70px;
   font-family: 'Handlee', cursive;
   text-align: center;
   color: white;

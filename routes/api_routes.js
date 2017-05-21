@@ -12,24 +12,24 @@ module.exports = function(app) {
     // A GET request to scrape the echojs website
     app.get("/scrape", function(req, res) {
         // First, we grab the body of the html with request
-        request("http://www.livescience.com/culture?type=article", function(error, response, html) {
+        request("http://www.livescience.com/news?type=article", function(error, response, html) {
             //Check for error
-            if(error){
+            if (error) {
                 throw error;
             }
             // Then, we load that into cheerio and save it to $ for a shorthand selector
             var $ = cheerio.load(html);
             // Now, we grab every h2 within an article tag, and do the following:
-            $(".pure-u-3-4").each(function(i, element) {
+            $(".contentListing").each(function(i, element) {
 
                 // Saves an empty result object
                 var result = {};
 
                 // Add the text and href of every link, and save them as properties of the result object
-                result.title = $(this).children("h2").text();
-                result.date = $(this).find(".date-posted").text();
-                result.content = $(this).find(".mod-copy").text();
-                result.link = $(this).find(".mod-copy").find("a").attr("href");
+                result.title = $(this).find(".pure-u-3-4").children("h2").text();
+                result.image = $(this).find(".search-item a img").attr("src");
+                result.content = $(this).find(".pure-u-3-4").find(".mod-copy").text();
+                result.link = $(this).find(".pure-u-3-4").find(".mod-copy").find("a").attr("href");
 
                 // Using our Article model, creates a new entry
                 // This effectively passes the result object to the entry (and the title and link)
@@ -49,7 +49,7 @@ module.exports = function(app) {
 
             });
             res.redirect("/");
-        }); 
+        });
     });
 
     // This will get the articles we scraped from the mongoDB
@@ -72,10 +72,10 @@ module.exports = function(app) {
 
     });
 
-// This will get the articles we scraped from the mongoDB
+    // This will get the articles that have been saved
     app.get("/saved", function(req, res) {
 
-        Article.find({"saved": true}, function(error, doc) {
+        Article.find({ "saved": true }, function(error, doc) {
             // Send any errors to the browser
             if (error) {
                 res.send(error);
@@ -94,8 +94,7 @@ module.exports = function(app) {
 
     // This will grab an article by it's ObjectId
     app.post("/saved/:id", function(req, res) {
-        Article.findOne({ "_id": req.params.id }, {$set: {'saved': true}}, 
-            function(error, doc) {
+        Article.findOneAndUpdate({"_id": req.params.id}, {$set: {'saved': true}}, function(error, doc) {
                 // Send any errors to the browser
                 if (error) {
                     res.send(error);
@@ -107,8 +106,35 @@ module.exports = function(app) {
             });
     });
 
+    // This will remove an article from our saved items
+    app.post('/remove/saved/:id', function(req, res) {
+
+        Article.findOneAndUpdate({ '_id': req.params.id }, { $set: { 'saved': false } }, function(error, doc) {
+            if (error) {
+                console.log(error);
+            } else {
+                res.redirect('/');
+            }
+        });
+    });
+
+
+    // Grab all notes for selected article
+    app.get("/getnote/:id", function(req, res) {
+
+        Article.findOne({ "_id": req.params.id })
+            .populate("note")
+            .exec(function(error, doc) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    res.json(doc);
+                }
+            });
+    });
+
     // Create a new note or replace an existing note
-    app.post("/saved/:id", function(req, res) {
+    app.post("/savednote/:id", function(req, res) {
         // Use our Note model to make a new note from the req.body
         var newNote = new Note(req.body);
         // Save the new note to mongoose
