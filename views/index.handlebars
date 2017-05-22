@@ -34,23 +34,23 @@
             </div>
         </div>
         <div class="parallax"><img src="./assets/img/science3.jpg"></div>
-    <!-- Article Boxes -->
-    {{#each articles}}
+    <!-- Article Boxes -->  
     <div class="article-container">
-        <ul class="collection with-header">            
+        <ul class="collection with-header">
+        {{#each articles}}            
             <div class="title" id="article_title">
                 <li class="collection-header #e1f5fe light-blue lighten-5">       
                     <div class="title_info"><img src="{{this.image}}"><h5>{{this.title}}
                     <a class="waves-effect waves-light btn" id="save_article" data-id="{{this._id}}">Save Article</a></h5></div>
                 </li>
-
             </div>
             <div class="summary" id="article_summary">
                 <li class="collection-item"><a href="http://www.livescience.com/{{this.link}}">{{this.content}}{{this.date}}</a></li>
-            </div>           
+            </div> 
+        {{/each}}
+        </ul>          
     </div>
-    {{/each}} 
-
+     
     <footer class="page-footer #212121 grey darken-4">
             © Copyright2017 Skylar Siagel | &nbsp
             <a class="grey-text text-lighten-4" href="https://github.com/Skylarann725/MongoArticles">GitHub Link</a>

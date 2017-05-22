@@ -44,21 +44,23 @@
         </div>
         <div class="parallax"><img src="./assets/img/science3.jpg"></div>
     <!-- Article Boxes -->
-    {{#each articles}}
     <div class="article-container">
-        <ul class="collection with-header">            
+        <ul class="collection with-header">  
+        {{#each articles}}          
             <div class="title-{{this._id}}" id="article_title">
                 <li class="collection-header #e1f5fe light-blue lighten-5">
-                 <form action="/saved" method="PUT" method="POST">
-                    <div><h5>{{this.title}}<a class="waves-effect waves-light btn" id="delete_button" data-id="{{this._id}}">Delete from Saved</a><a class="waves-effect waves-light btn" id="notes_button" data-id="{{this._id}}">Article Notes</a></h5></div>
+                 <form action="/saved" method="PUT" method="POST">      
+                    <div class="title_info"><img src="{{this.image}}"><h5>{{this.title}}<a class="waves-effect waves-light btn" id="delete_button" data-id="{{this._id}}">Delete from Saved</a>
+                    <a class="waves-effect waves-light btn" id="notes_button" data-id="{{this._id}}">Article Notes</a></h5></div>
                 </li>
                 </form>
             </div>
             <div class="summary" id="article_summary">
                 <li class="collection-item"><p><a href="http://www.livescience.com/{{this.link}}">{{this.content}}{{this.date}}</a></p></li>
-            </div>            
+            </div>  
+        {{/each}}
+        </ul>         
     </div>
-    {{/each}}
 
     <footer class="page-footer #212121 grey darken-4">
             © Copyright2017 Skylar Siagel | &nbsp

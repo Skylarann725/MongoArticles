@@ -21,19 +21,6 @@
           $('#resultsModal').modal();
           $('#commentsModal').modal();
 
-          // Grab the articles as a json
-          $.getJSON("/", function(data) {
-            Handlebars.registerHelper('each', function(context, options) {
-              var ret = "";
-
-              for(var i=0, j=context.length; i<j; i++) {
-              ret = ret + options.fn(context[i]);
-              }
-
-              return ret;
-            });
-          });
-
           //On click of scrape articles button
           $("#scraped").on("click", function(event) {
 
@@ -57,8 +44,10 @@
             // With that done, add the article information to the page
             .done(function(data) {
               console.log(data);
-              $("#article_title").prepend(data.title);
-              $("#article_summary").prepend(data.content);
+              for (var i = 0; i < data.length; i++) {
+              $("#article_title").prepend(data[i].title);
+              $("#article_summary").prepend(data[i].content);
+              }
             });
           });
 
