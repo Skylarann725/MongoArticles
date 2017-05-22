@@ -34,7 +34,7 @@
           $("#save_article").on("click", function() {
             // Save the id
             var thisId = $(this).attr("data-id");
-            console.log(thisId);
+            console.log(this);
 
             // Now make an ajax call for the Article
             $.ajax({
@@ -42,13 +42,7 @@
             url: `/saved/${thisId}`
             })
             // With that done, add the article information to the page
-            .done(function(data) {
-              console.log(data);
-              for (var i = 0; i < data.length; i++) {
-              $("#article_title").prepend(data[i].title);
-              $("#article_summary").prepend(data[i].content);
-              }
-            });
+            .done();
           });
 
           $("#delete_button").on("click", function() {
