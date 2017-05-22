@@ -98,7 +98,7 @@ module.exports = function(app) {
                 }
                 // Or, send our results to the browser, which will now include the notes stored in the user
                 else {
-                    
+                    res.redirect('/')
                 }
             });
     });
