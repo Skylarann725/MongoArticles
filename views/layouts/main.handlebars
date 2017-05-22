@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./assets/css/article_style.css" type="text/css" />
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Handlee|Boogaloo|Shrikhand" rel="stylesheet">
     <title>Scraping With Mongoose</title>
   <body>
     {{{ body }}}
@@ -32,20 +32,34 @@
 
           $("#save_article").on("click", function() {
             // Save the id
-            var id = $(this).attr("data-id");
-            console.log(id);
+            var thisId = $(this).attr("data-id");
+            console.log(thisId);
 
             // Now make an ajax call for the Article
             $.ajax({
             method: "POST",
-            url: `/saved/${id}`
+            url: `/saved/${thisId}`
             })
             // With that done, add the article information to the page
             .done(function(data) {
               console.log(data);
-              $("article_title").prepend(data.title);
+              $("#article_title").prepend(data.title);
             });
           });
+
+          $("#delete_button").on("click", function() {
+            // Save the id
+            var thisId = $(this).attr("data-id");
+            console.log(thisId);
+
+            $.ajax({
+            method: 'POST',
+            url: `remove/saved/${thisId}`
+            }).done(function () {
+            $("#article_title").hide();
+            $("#article_summary").hide();
+            })
+          })
       });
     </script> 
   </body>

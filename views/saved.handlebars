@@ -2,7 +2,7 @@
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper #212121 grey darken-4">
-            <a href="#" class="brand-logo center">Article Finder</a>
+            <a href="#" class="brand-logo center">Live Science Article Finder</a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li id="index_hbds"><a href="/">Home</a></li>
                 <li id="saved_hbds"><a href="/saved">Saved Articles</a></li>
@@ -14,31 +14,42 @@
     <div id="commentsModal" class="modal">
         <div class="modal-content center-align">
             <h4>Notes for Article: {{this._id}}</h4>
+            <p id="newnote"></p>
         </div>
         <div class="modal-footer">
             <a href="/saved" class="modal-action modal-close waves-effect waves-green btn-flat">Save Note</a>
         </div>
     </div>
     <!-- Paralax -->
-    <div class="parallax-container">
+        <div id="index-banner" class="parallax-container">
+            <div class="section no-pad bot"
+                <div class="container">
+                    <br>
+                    <br>
+                    <h1>Live Science Articles!</h1>
+                        <div class="row center">
+                            <h4>Press the "Get Articles" button to get all of your Live Science Articles!</h4>
+                        </div>
+                </div>
+            </div>
+        </div>
         <div class="parallax"><img src="./assets/img/science3.jpg"></div>
-    </div>
     <!-- Article Boxes -->
+    {{#each articles}}
     <div class="articles">
-        <ul class="collection with-header">
-        {{#each articles}}            
-            <div class="title" id="article_title">
+        <ul class="collection with-header">            
+            <div class="title-{{this._id}}" id="article_title">
                 <li class="collection-header #e1f5fe light-blue lighten-5">
                  <form action="/saved" method="PUT" method="POST">
-                    <div><h5>{{this.title}}<a class="waves-effect waves-light btn" id="delete_button">Delete from Saved</a><a class="waves-effect waves-light btn" id="notes_button" data-id="{{this._id}}">Article Notes</a></h5></div>
+                    <div><h5>{{this.title}}<a class="waves-effect waves-light btn" id="delete_button" data-id="{{this._id}}">Delete from Saved</a><a class="waves-effect waves-light btn" id="notes_button" data-id="{{this._id}}">Article Notes</a></h5></div>
                 </li>
                 </form>
             </div>
             <div class="summary" id="article_summary">
                 <li class="collection-item"><p><a href="http://www.livescience.com/{{this.link}}">{{this.content}}{{this.date}}</a></p></li>
-            </div> 
-        {{/each}}           
+            </div>            
     </div>
+    {{/each}}
 
     <footer class="page-footer #212121 grey darken-4">
             © Copyright2017 Skylar Siagel | &nbsp

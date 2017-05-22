@@ -21,13 +21,23 @@
         </div>
     </div>
     <!-- Paralax -->
-    <div class="parallax-container">
+        <div id="index-banner" class="parallax-container">
+            <div class="section no-pad bot"
+                <div class="container">
+                    <br>
+                    <br>
+                    <h1>Live Science Articles!</h1>
+                        <div class="row center">
+                            <h4>Press the "Get Articles" button to get all of your Live Science Articles!</h4>
+                        </div>
+                </div>
+            </div>
+        </div>
         <div class="parallax"><img src="./assets/img/science3.jpg"></div>
-    </div>
     <!-- Article Boxes -->
+    {{#each articles}}
     <div class="articles">
-        <ul class="collection with-header">
-        {{#each articles}}            
+        <ul class="collection with-header">            
             <div class="title" id="article_title">
                 <li class="collection-header #e1f5fe light-blue lighten-5">
                  <form action="/" method="PUT" method="POST">
@@ -37,9 +47,9 @@
             </div>
             <div class="summary" id="article_summary">
                 <li class="collection-item"><a href="http://www.livescience.com/{{this.link}}">{{this.content}}{{this.date}}</a></p></li>
-            </div> 
-        {{/each}}           
+            </div>           
     </div>
+    {{/each}} 
 
     <footer class="page-footer #212121 grey darken-4">
             © Copyright2017 Skylar Siagel | &nbsp

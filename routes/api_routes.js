@@ -101,7 +101,7 @@ module.exports = function(app) {
                 }
                 // Or, send our results to the browser, which will now include the notes stored in the user
                 else {
-                    res.redirect("/");
+                    
                 }
             });
     });
@@ -109,12 +109,13 @@ module.exports = function(app) {
     // This will remove an article from our saved items
     app.post('/remove/saved/:id', function(req, res) {
 
-        Article.findOneAndUpdate({ '_id': req.params.id }, { $set: { 'saved': false } }, function(error, doc) {
+        Article.findOneAndUpdate({'_id': req.params.id}, {$set: {'saved': false }}, function(error, doc) {
             if (error) {
                 console.log(error);
             } else {
-                res.redirect('/');
+                console.log(doc);
             }
+            res.redirect("/");
         });
     });
 
