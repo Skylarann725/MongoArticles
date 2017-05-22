@@ -19,6 +19,20 @@
           $('select').material_select();
           // initializing materialize modal element
           $('#resultsModal').modal();
+          $('#commentsModal').modal();
+
+          // Grab the articles as a json
+          $.getJSON("/", function(data) {
+            Handlebars.registerHelper('each', function(context, options) {
+              var ret = "";
+
+              for(var i=0, j=context.length; i<j; i++) {
+              ret = ret + options.fn(context[i]);
+              }
+
+              return ret;
+            });
+          });
 
           //On click of scrape articles button
           $("#scraped").on("click", function(event) {
@@ -44,6 +58,7 @@
             .done(function(data) {
               console.log(data);
               $("#article_title").prepend(data.title);
+              $("#article_summary").prepend(data.content);
             });
           });
 
@@ -54,12 +69,49 @@
 
             $.ajax({
             method: 'POST',
-            url: `remove/saved/${thisId}`
+            url: `/remove/saved/${thisId}`
             }).done(function () {
             $("#article_title").hide();
             $("#article_summary").hide();
+            });
+          });
+
+          $("#notes_button").on("click", function() {
+            var thisId = $(this).attr("data-id");
+            console.log(thisId);
+
+            $.ajax({
+            method: 'GET',
+            url: `/getnote/${thisId}`,
+            }).done(function(data){
+            $('#commentsModal').modal('open');
+              // If there's a note in the article
+              if (data.note) {
+              // Place the body of the note in the body textarea
+              $("#textarea1").val(data.note.body);
+              }
             })
-          })
+          });
+
+          // When you click the savenote button
+          $("#savenote").on("click", function() {
+            // Grab the id associated with the article from the submit button
+            var thisId = $(this).attr("data-id");
+            console.log(thisId);
+            // Run a POST request to change the note, using what's entered in the inputs
+            $.ajax({
+            method: 'POST',
+            url: `/savenote/${thisId}`,
+            data: {
+              // Value taken from note textarea
+              body: $("#textarea1").val().trim()
+            }
+          }).done(function(data) {
+            // Log the response
+            console.log(data);
+            $('#textarea1').val('');
+            });
+          });
       });
     </script> 
   </body>

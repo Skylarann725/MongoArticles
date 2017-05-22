@@ -28,7 +28,7 @@
                     <br>
                     <h1>Live Science Articles!</h1>
                         <div class="row center">
-                            <h4>Press the "Get Articles" button to get all of your Live Science Articles!</h4>
+                            <h4>Click the "Get Articles" button to get all of the latest Live Science Articles!</h4>
                         </div>
                 </div>
             </div>
@@ -36,17 +36,17 @@
         <div class="parallax"><img src="./assets/img/science3.jpg"></div>
     <!-- Article Boxes -->
     {{#each articles}}
-    <div class="articles">
+    <div class="article-container">
         <ul class="collection with-header">            
             <div class="title" id="article_title">
-                <li class="collection-header #e1f5fe light-blue lighten-5">
-                 <form action="/" method="PUT" method="POST">
-                    <div><h5><img src="{{this.image}}">{{this.title}}<a class="waves-effect waves-light btn" id="save_article" data-id="{{this._id}}">Save Article</a></h5></div>
+                <li class="collection-header #e1f5fe light-blue lighten-5">       
+                    <div class="title_info"><img src="{{this.image}}"><h5>{{this.title}}
+                    <a class="waves-effect waves-light btn" id="save_article" data-id="{{this._id}}">Save Article</a></h5></div>
                 </li>
-                </form>
+
             </div>
             <div class="summary" id="article_summary">
-                <li class="collection-item"><a href="http://www.livescience.com/{{this.link}}">{{this.content}}{{this.date}}</a></p></li>
+                <li class="collection-item"><a href="http://www.livescience.com/{{this.link}}">{{this.content}}{{this.date}}</a></li>
             </div>           
     </div>
     {{/each}} 

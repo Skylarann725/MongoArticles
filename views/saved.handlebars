@@ -13,11 +13,20 @@
     <!-- Modal Structure -->
     <div id="commentsModal" class="modal">
         <div class="modal-content center-align">
-            <h4>Notes for Article: {{this._id}}</h4>
-            <p id="newnote"></p>
+            <h4>Notes for Article:</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" name="body" class="materialize-textarea"></textarea>
+                            <label for="textarea1">Your Note Here</label>
+                        </div>
+                    </div>
+                 </form>
+            </div>
         </div>
         <div class="modal-footer">
-            <a href="/saved" class="modal-action modal-close waves-effect waves-green btn-flat">Save Note</a>
+            <a href="/saved" class="modal-action modal-close waves-effect waves-green btn-flat" id="savenote" data-id="{{this._id}}">Save Note</a>
         </div>
     </div>
     <!-- Paralax -->
@@ -28,7 +37,7 @@
                     <br>
                     <h1>Live Science Articles!</h1>
                         <div class="row center">
-                            <h4>Press the "Get Articles" button to get all of your Live Science Articles!</h4>
+                            <h4>Your Saved Articles</h4>
                         </div>
                 </div>
             </div>
@@ -36,7 +45,7 @@
         <div class="parallax"><img src="./assets/img/science3.jpg"></div>
     <!-- Article Boxes -->
     {{#each articles}}
-    <div class="articles">
+    <div class="article-container">
         <ul class="collection with-header">            
             <div class="title-{{this._id}}" id="article_title">
                 <li class="collection-header #e1f5fe light-blue lighten-5">

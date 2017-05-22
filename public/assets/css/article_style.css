@@ -51,17 +51,23 @@ h4 {
     min-height: 100%;
 }
 
-.collection {
-    background-color: white;
+.article-container {
+  background-color: white;
 }
 
 .collection-header {
     font-family: 'Handlee', cursive;
-    height: 80px;
+    height: 90px;
 }
 
 .collection-item {
     font-family: 'Handlee', cursive;
+    height: 60px;
+}
+
+h5 {
+  margin-left: 120px;
+  margin-top: -55px;
 }
 
 #scraped {

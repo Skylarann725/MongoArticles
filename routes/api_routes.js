@@ -20,14 +20,14 @@ module.exports = function(app) {
             // Then, we load that into cheerio and save it to $ for a shorthand selector
             var $ = cheerio.load(html);
             // Now, we grab every h2 within an article tag, and do the following:
-            $(".contentListing").each(function(i, element) {
+            $(".search-item").each(function(i, element) {
 
                 // Saves an empty result object
                 var result = {};
 
                 // Add the text and href of every link, and save them as properties of the result object
                 result.title = $(this).find(".pure-u-3-4").children("h2").text();
-                result.image = $(this).find(".search-item a img").attr("src");
+                result.image = $(this).find("a img").attr("src");
                 result.content = $(this).find(".pure-u-3-4").find(".mod-copy").text();
                 result.link = $(this).find(".pure-u-3-4").find(".mod-copy").find("a").attr("href");
 
@@ -62,11 +62,8 @@ module.exports = function(app) {
             }
             // Or send the doc to the browser
             else {
-                var hbsObject = {
-                    articles: doc
-                };
-                console.log(hbsObject);
-                res.render("index", hbsObject);
+                
+                res.render("index", {articles: doc});
             }
         });
 
@@ -129,13 +126,13 @@ module.exports = function(app) {
                 if (error) {
                     console.log(error);
                 } else {
-                    res.json(doc);
+                    res.send(doc);
                 }
             });
     });
 
     // Create a new note or replace an existing note
-    app.post("/savednote/:id", function(req, res) {
+    app.post("/savenote/:id", function(req, res) {
         // Use our Note model to make a new note from the req.body
         var newNote = new Note(req.body);
         // Save the new note to mongoose
