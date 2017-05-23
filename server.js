@@ -14,7 +14,7 @@ var request = require("request");
 var cheerio = require("cheerio");
 
 // Initialize Express
-// var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3000;
 var app = express();
 
 // Use morgan and body parser with our app
