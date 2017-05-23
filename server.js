@@ -36,14 +36,12 @@ app.set("view engine", "handlebars");
 mongoose.Promise = Promise;
 
 // Database configuration with mongoose
-// var databaseURI = 'mongodb://localhost/webscrape'
+var databaseURI = 'mongodb://localhost/webscrape'
 var mongodbURI = 'mongodb://heroku_h7nvdmd7:eijo3ubs7vchufh9dh79g4lq7s@ds149431.mlab.com:49431/heroku_h7nvdmd7'
 
-// if (process.env.mongodbURI) {
-	mongoose.connect(mongodbURI);
-// } else {
-	// mongoose.connect(databaseURI);
-// }
+
+mongoose.connect(mongodbURI);
+// mongoose.connect(databaseURI);
 
 var db = mongoose.connection;
 
