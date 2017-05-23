@@ -39,7 +39,7 @@ mongoose.Promise = Promise;
 var databaseURI = 'mongodb://localhost/webscrape'
 var mongodbURI = 'mongodb://heroku_h7nvdmd7:eijo3ubs7vchufh9dh79g4lq7s@ds149431.mlab.com:49431/heroku_h7nvdmd7'
 
-if (PORT) {
+if (process.env.mongodbURI) {
 	mongoose.connect(mongodbURI);
 } else {
 	mongoose.connect(databaseURI);
@@ -61,6 +61,6 @@ db.once("open", function() {
 require("./routes/api_routes.js")(app);
 
 // Listen on port 3000
-app.listen(3000, function() {
+app.listen(PORT, function() {
     console.log("App running on port 3000!");
 });
