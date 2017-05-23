@@ -80,16 +80,20 @@ h5 {
     background-color: #212121;
 }
 
+.saved_article {
+    float: right;
+}
+
 img {
   width: 100px;
 }
 
-#notes_button {
+.notes_button {
     float: right;
     background-color: #212121;
 }
 
-#delete_button {
+.delete_button {
     float: right;
     background-color: #212121;
     margin-left: 5px;

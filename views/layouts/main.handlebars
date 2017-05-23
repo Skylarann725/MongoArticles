@@ -42,10 +42,14 @@
             url: `/saved/${thisId}`
             })
             // With that done, add the article information to the page
-            .done();
+            .done(function() {
+              $(this).removeClass('save_article')
+                .addClass('saved_article')
+                .text('Saved')
+            });
           });
 
-          $("#delete_button").on("click", function() {
+          $(".delete_button").on("click", function() {
             // Save the id
             var thisId = $(this).attr("data-id");
             console.log(thisId);
@@ -59,7 +63,7 @@
             });
           });
 
-          $("#notes_button").on("click", function() {
+          $(".notes_button").on("click", function() {
             var thisId = $(this).attr("data-id");
             console.log(thisId);
             $('#savenote').attr('data-id', thisId);
