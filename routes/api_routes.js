@@ -63,7 +63,7 @@ module.exports = function(app) {
             // Or send the doc to the browser
             else {
                 
-                res.render("index", {articles: doc});
+                res.render("index", {myarticles: doc});
             }
         });
 
@@ -80,7 +80,7 @@ module.exports = function(app) {
             // Or send the doc to the browser
             else {
                 var hbsObject = {
-                    articles: doc
+                    myarticles: doc
                 };
                 console.log(hbsObject);
                 res.render("saved", hbsObject);

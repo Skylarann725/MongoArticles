@@ -37,8 +37,8 @@
     <!-- Article Boxes -->  
     <div class="article-container">
         <ul class="collection with-header">
-        {{#each articles}}            
-            <div class="title" id="article_title">
+        {{#each myarticles}}
+          <div class="title" id="article_title">
                 <li class="collection-header #c5cae9 indigo lighten-4">       
                     <div class="title_info"><a href="http://www.livescience.com/{{this.link}}"><img src="{{this.image}}"></a><p>{{this.title}}
                     {{#if this.saved}}
@@ -53,7 +53,7 @@
                 <li class="collection-item">{{this.content}}<a href="http://www.livescience.com/{{this.link}}">Here</a></li>
             </div> 
         {{/each}}
-        </ul>          
+        </ul>
     </div>
      
     <footer class="page-footer #212121 grey darken-4">

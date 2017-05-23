@@ -1,3 +1,18 @@
+
+.card-title {
+  font-family: 'Handlee', cursive;
+  text-align: center;
+}
+
+.card-content {
+  font-family: 'Handlee', cursive;
+  text-align: center;
+}
+
+.card-action {
+  height: 70px;
+}
+
 body {
     background-color: white;
 }
