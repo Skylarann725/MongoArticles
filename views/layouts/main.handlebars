@@ -62,18 +62,22 @@
           $("#notes_button").on("click", function() {
             var thisId = $(this).attr("data-id");
             console.log(thisId);
+            $('#savenote').attr('data-id', thisId);
 
             $.ajax({
             method: 'GET',
             url: `/getnote/${thisId}`,
             }).done(function(data){
             $('#commentsModal').modal('open');
+            $.each(data.note, function( i, v ) {
+                var count = i + 1;
               // If there's a note in the article
               if (data.note) {
               // Place the body of the note in the body textarea
               $("#textarea1").val(data.note.body);
               }
-            })
+            });
+          });
           });
 
           // When you click the savenote button

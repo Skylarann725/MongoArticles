@@ -96,7 +96,7 @@ module.exports = function(app) {
                 if (error) {
                     res.send(error);
                 }
-                // Or, send our results to the browser, which will now include the notes stored in the user
+                // Or, send our results to the browser
                 else {
                     res.redirect('/')
                 }
@@ -104,7 +104,7 @@ module.exports = function(app) {
     });
 
     // This will remove an article from our saved items
-    app.post('/remove/saved/:id', function(req, res) {
+    app.post("/remove/saved/:id", function(req, res) {
 
         Article.findOneAndUpdate({'_id': req.params.id}, {$set: {'saved': false }}, function(error, doc) {
             if (error) {
