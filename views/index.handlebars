@@ -41,7 +41,12 @@
             <div class="title" id="article_title">
                 <li class="collection-header #e1f5fe light-blue lighten-5">       
                     <div class="title_info"><a href="http://www.livescience.com/{{this.link}}"><img src="{{this.image}}"></a><h5>{{this.title}}
-                    <a class="waves-effect waves-light btn" id="save_article" data-id="{{this._id}}">Save Article</a></h5></div>
+                    {{#if this.saved}}
+                        <a class="waves-effect waves-light btn #ff6e40 deep-orange accent-2 save_article" data-id="{{this._id}}">Saved</a></h5></div>
+                    {{/if}}
+                    {{#unless this.saved}}
+                        <a class="waves-effect waves-light btn save_article" data-id="{{this._id}}">Save Article</a></h5></div>
+                    {{/unless}}
                 </li>
             </div>
             <div class="summary" id="article_summary">

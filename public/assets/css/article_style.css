@@ -75,7 +75,7 @@ h5 {
   color: black;
 }
 
-#save_article {
+.save_article {
     float: right;
     background-color: #212121;
 }
