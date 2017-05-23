@@ -42,19 +42,19 @@
                 </div>
             </div>
         </div>
-        <div class="parallax"><img src="./assets/img/science3.jpg"></div>
+        <div class="parallax"><img src="./assets/img/space.jpg"></div>
     <!-- Article Boxes -->
     <div class="article-container">
         <ul class="collection with-header">  
         {{#each articles}}          
-            <div class="title-{{this._id}}" id="article_title">
-                <li class="collection-header #e1f5fe light-blue lighten-5">     
-                    <div class="title_info"><img src="{{this.image}}"><h5>{{this.title}}<a class="waves-effect waves-light btn delete_button" data-id="{{this._id}}">Delete from Saved</a>
-                    <a class="waves-effect waves-light btn notes_button" data-id="{{this._id}}">Article Notes</a></h5></div>
+            <div class="title" id="article_title">
+                <li class="collection-header #c5cae9 indigo lighten-4">     
+                    <div class="title_info"><img src="{{this.image}}"><p>{{this.title}}<a class="waves-effect waves-light btn delete_button" data-id="{{this._id}}">Delete from Saved</a>
+                    <a class="waves-effect waves-light btn notes_button" data-id="{{this._id}}">Article Notes</a></p></div>
                 </li>
             </div>
             <div class="summary" id="article_summary">
-                <li class="collection-item"><p>{{this.content}}<a href="http://www.livescience.com/{{this.link}}">Here</a></p></li>
+                <li class="collection-item">{{this.content}}<a href="http://www.livescience.com/{{this.link}}">Here</a></li>
             </div>  
         {{/each}}
         </ul>         

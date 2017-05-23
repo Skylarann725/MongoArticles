@@ -28,21 +28,21 @@
                     <br>
                     <h1>Live Science Articles!</h1>
                         <div class="row center">
-                            <h4>Click the "Get New Articles" button to get all of the latest Live Science Articles!</h4>
+                            <h4>The best site to get all of the latest Live Science Articles!</h4>
                         </div>
                 </div>
             </div>
         </div>
-        <div class="parallax"><img src="./assets/img/science3.jpg"></div>
+        <div class="parallax"><img src="./assets/img/space.jpg"></div>
     <!-- Article Boxes -->  
     <div class="article-container">
         <ul class="collection with-header">
         {{#each articles}}            
             <div class="title" id="article_title">
-                <li class="collection-header #e1f5fe light-blue lighten-5">       
-                    <div class="title_info"><a href="http://www.livescience.com/{{this.link}}"><img src="{{this.image}}"></a><h5>{{this.title}}
+                <li class="collection-header #c5cae9 indigo lighten-4">       
+                    <div class="title_info"><a href="http://www.livescience.com/{{this.link}}"><img src="{{this.image}}"></a><p>{{this.title}}
                     {{#if this.saved}}
-                        <a class="waves-effect waves-light btn #ff6e40 deep-orange accent-2 saved_article" data-id="{{this._id}}">Saved</a></h5></div>
+                        <a class="waves-effect waves-light btn #212121 grey darken-4 accent-2 saved_article" data-id="{{this._id}}">Saved</a></p></div>
                     {{/if}}
                     {{#unless this.saved}}
                         <a class="waves-effect waves-light btn save_article" data-id="{{this._id}}">Save Article</a></h5></div>
